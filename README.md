@@ -43,3 +43,10 @@ Este website é desenvolvido para exibir cartas do Pokémon TCG utilizando a API
 
 ### Design Consistente
 - Todas as páginas, exceto a de login, mantêm o cabeçalho e o menu lateral fixo, proporcionando uma navegação consistente e fácil acesso às funcionalidades principais.
+
+
+### Instalação do Projeto
+- Com o Node.js e npm (ou yarn) já instalados, execute **"npm install" ou "yarn install"** para instalar as dependências do projeto.
+
+- Após isso **"ng serve"** para executá-lo em modo "localhost".
+
