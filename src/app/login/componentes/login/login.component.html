@@ -1,0 +1,22 @@
+<section class="fundo" [@fadeInOut]>
+  <div class="main-container">
+    <div class="form-container">
+      <div class="texts">
+        <h2>Log In</h2>
+        <P>Use your credentials to sign in</P>
+      </div>
+      <div class="errMessage" *ngIf="openErrMsg" [@fadeInOut]>
+        <div>
+          <p>Your username or password is incorrect! Please review and try again.</p>
+        </div>
+      </div>
+      <form class="cadastro" [formGroup]="loginForm" (ngSubmit)="login()">
+        <input type="text" id="username" name="username" required placeholder="Usuário" formControlName="username">
+        <input type="password" id="password" name="password" required placeholder="Senha" formControlName="password">
+        <div class="buttons">
+          <button type="submit">Log In</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

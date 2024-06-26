@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  font-family: Arial, sans-serif;
+  padding-top: 75px;
+  background: #424242 url(../src/assets/light-background.png);
+}
+
+section {
+  min-width: 292px !important;
+}
+
+.container {
+  min-width: 250px;
+}
+
+.filter-box {
+  min-width: 250px;
+}
+
+.content {
+  // margin-left: 250px;
+  padding: 20px 20px 20px 270px;
+}
+
+@media only screen and (max-width: 710px) {
+  .content {
+    padding: 20px;
+  }
+  .container {
+    max-width: none !important;
+  }
+  .col {
+    max-width: none !important;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .attacks {
+    .attack-list {
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      p {
+        margin: 0 !important;
+      }
+    }
+  }
+}

@@ -1,13 +1,30 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { fadeInOut } from './shared/animations';
+import { AuthService } from './services/authentication/auth.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  animations: [fadeInOut]
 })
 export class AppComponent {
+  constructor(private authService: AuthService) { }
   title = 'testeL5';
+  isLoginOn = true;
+  sidebarOpen = false;
+  profileOptions = false;
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  toggleProfileOptions() {
+    this.profileOptions = !this.profileOptions;
+  }
+
+  logOut() {
+    this.authService.logout();
+  }
+
 }

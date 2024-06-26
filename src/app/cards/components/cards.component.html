@@ -1,0 +1,27 @@
+<section class="content">
+  <div class="filter-box">
+    <div class="back-title">
+      <div *ngIf="filteredCards.length > 0" (click)="cleanSearch()" [@fadeInOut]>
+        <img src="../../../../assets/arrow-left.svg" alt="">
+      </div>
+      <h4>Cards</h4>
+    </div>
+    <div class="filters">
+      <input type="search" class="form-control" placeholder="Search by Name" [(ngModel)]="filterText">
+      <button class="pesquisar" type="submit" (click)="searchData(true)"><img src="../../../assets/search.svg" alt=""></button>
+    </div>
+  </div>
+  <div class="container text-center w-60 h-100" [@fadeInOut] [ngClass]="{'isLoadingTrue': !loading && !notFound}">
+    <div class="row" [@fadeInOut] *ngIf="cards.length > 0 && !notFound && !closeList">
+      <div class="col" *ngFor="let cardRows of cards" [@fadeInOut] (click)="verDetalhes(cardRows.id)">
+        <img [src]="cardRows.images.small" alt="pokemon card">
+      </div>
+    </div>
+    <div class="loading" *ngIf="loading" [@fadeInOut]>
+      <img src="../../../../assets/Poké_Ball_icon.svg.png" alt="">
+    </div>
+    <div class="loading" *ngIf="notFound" [@fadeInOut]>
+      <h4>"{{getFilterTextFromApi()}}" not found...</h4>
+    </div>
+  </div>
+</section>

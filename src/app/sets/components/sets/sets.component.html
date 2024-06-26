@@ -1,0 +1,28 @@
+<section class="content">
+  <div class="filter-box">
+    <h4>Sets</h4>
+    <div class="filters">
+      <input type="search" class="form-control" placeholder="Pesquisar por nome" [(ngModel)]="filterText"
+        (input)="searchData()">
+    </div>
+  </div>
+  <div class="container text-center w-60 h-100" *ngIf="series" [@fadeInOut]>
+    <div *ngFor="let a of series">
+      <div class="row" *ngIf="filteredOrganisedSets[processSeriesElement(a)]?.length">
+        <h4>{{a}}</h4>
+        <div class="col" *ngFor="let b of filteredOrganisedSets[processSeriesElement(a)]" (click)="verDetalhes(b.id)">
+          <div class="box">
+            <p>{{b.name}}</p>
+            <img [src]="b.images.logo" alt="pokemon card">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container loading" *ngIf="!series" [@fadeInOut]>
+    <img src="../../../../assets/Poké_Ball_icon.svg.png" alt="">
+  </div>
+  <div class="container loading" *ngIf="notFound" [@fadeInOut]>
+    <h4>"{{getFilterTextFromApi()}}" not found...</h4>
+  </div>
+</section>

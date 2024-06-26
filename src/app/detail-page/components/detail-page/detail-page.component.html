@@ -1,0 +1,67 @@
+<section class="content">
+  <div class="container text-center w-60 h-100" *ngIf="card" [@fadeInOut]>
+    <div class="row">
+      <div class="image-box col">
+        <img src="{{card.images.large}}" alt="pokemon card">
+      </div>
+      <div class="info-box info col">
+        <div class="name" [class]="card.types[0].toLowerCase()">
+          <h4>{{card.name}}<span *ngIf="card.level"> LV. {{card.level}}</span></h4>
+          <p>HP: {{card.hp}}</p>
+          <img *ngFor="let types of card.types" [src]="getImages(types)" alt="">
+        </div>
+        <div class="attacks">
+          <div class="abilities" *ngIf="card.rules">
+            <h6>Rules</h6>
+            <div *ngFor="let rules of card.rules">
+              <p><span class="fw-bold text-primary">{{rules.split(':')[0]}}: </span>{{rules.split(':')[1]}}</p>
+            </div>
+          </div>
+          <div class="attack" *ngIf="card.attacks">
+            <h6>Attacks</h6>
+            <div *ngFor="let attacks of card.attacks" class="attack-list">
+              <div>
+                <img *ngFor="let cost of attacks.cost" [src]="getImages(cost)" alt="">
+              </div>
+              <p><span class="fw-bold">{{attacks.name}} </span>{{attacks.text}}</p>
+              <p class="fw-bold fs-20">{{attacks.damage}}</p>
+            </div>
+          </div>
+          <br>
+          <div class="abilities" *ngIf="card.abilities">
+            <h6>Abilities</h6>
+            <div *ngFor="let abilities of card.abilities">
+              <p><span class="fw-bold">{{abilities.name}} </span>{{abilities.text}}</p>
+            </div>
+          </div>
+          <div class="others" *ngIf="card.weaknesses || card.resistances || card.retreatCost">
+            <div class="weakness" *ngFor="let weakness of card.weaknesses">
+              <p>Weakness</p>
+              <div>
+                <img [src]="getImages(weakness.type)" alt="">
+                <p>{{weakness.value}}</p>
+              </div>
+            </div>
+            <div class="resistances" *ngFor="let resistance of card.resistances">
+              <p>Resistance</p>
+              <div>
+                <img [src]="getImages(resistance.type)" alt="">
+                <p>{{resistance.value}}</p>
+              </div>
+            </div>
+            <div class="retreat">
+              <p>Retreat Cost</p>
+              <img *ngFor="let types of card.retreatCost" [src]="getImages(types)" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="flavortext" *ngIf="card.flavorText">
+          <p>{{card.flavorText}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container loading" *ngIf="!card" [@fadeInOut]>
+    <img src="../../../../assets/Poké_Ball_icon.svg.png" alt="">
+  </div>
+</section>
